@@ -41,10 +41,10 @@ VTube Studio/
 
 ### 2. Install Plugin
 
-Download `VTSRTXUnlocker.dll` from [Releases](https://github.com/hanachan1026/VTSRTXUnlocker/releases) and place it in:
+Download `VTSRTXGPUSelector.dll` from [Releases](https://github.com/hanachan1026/VTSRTXUnlocker/releases) and place it in:
 
 ```
-VTube Studio/BepInEx/plugins/VTSRTXUnlocker.dll
+VTube Studio/BepInEx/plugins/VTSRTXGPUSelector.dll
 ```
 
 ### 3. Usage
@@ -54,18 +54,23 @@ VTube Studio/BepInEx/plugins/VTSRTXUnlocker.dll
 3. GPU selection popup appears automatically
 4. Select your RTX GPU → Start tracking
 
+### Troubleshooting
+
+If VTube Studio is running but the RTX GPU isn't selected by default:
+
+1. Ensure the plugin `VTSRTXGPUSelector.dll` is in `[VTS Path]/BepInEx/plugins/`
+2. Check if the NVIDIA Tracker is properly installed via the official VTube Studio installer.
+
 ## Building from Source
 
 ```bash
 # Clone
-git clone https://github.com/hanachan1026/VTSRTXUnlocker.git
-cd VTSRTXUnlocker
-
-# Set VTS path (adjust to your install location)
-dotnet build -c Release -p:VTSPath="C:\Program Files (x86)\Steam\steamapps\common\VTube Studio"
+git clone https://github.com/[your-username]/VTS-RTX-GPU-Selector.git
+cd VTS-RTX-GPU-Selector
+dotnet build src/VTS-RTX-GPU-Selector.csproj -c Release
 ```
 
-Output: `bin/Release/net462/VTSRTXUnlocker.dll`
+Output: `bin/Release/net462/VTS-RTX-GPU-Selector.dll`
 
 ## How It Works
 

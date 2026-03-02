@@ -7,7 +7,7 @@ using BepInEx.Configuration;
 using HarmonyLib;
 using UnityEngine;
 
-namespace VTSRTXUnlocker
+namespace VTSRTXGPUSelector
 {
     public class GpuInfo
     {
@@ -180,9 +180,10 @@ namespace VTSRTXUnlocker
     // BepInEx Plugin Entry Point
     // =========================================================================
 
-    [BepInPlugin("com.vts.rtxunlocker", "VTS RTX Unlocker", "2.2.0")]
+    [BepInPlugin("com.bbggkkk.vtsrtxgpuselector", "VTS RTX GPU Selector", "2.2.0")]
     public class Plugin : BaseUnityPlugin
     {
+        private const string MyPluginInfo_PLUGIN_NAME = "VTS RTX GPU Selector";
         private void Awake()
         {
             GpuState.SavedGpuIndex = Config.Bind("GPU", "SelectedIndex", 0,

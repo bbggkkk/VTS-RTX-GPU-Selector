@@ -41,10 +41,10 @@ VTube Studio/
 
 ### 2. 플러그인 설치
 
-[Releases](https://github.com/hanachan1026/VTSRTXUnlocker/releases)에서 `VTSRTXUnlocker.dll`을 다운로드하여 아래 경로에 배치:
+[Releases](https://github.com/hanachan1026/VTSRTXUnlocker/releases)에서 `VTSRTXGPUSelector.dll`을 다운로드하여 아래 경로에 배치:
 
 ```
-VTube Studio/BepInEx/plugins/VTSRTXUnlocker.dll
+VTube Studio/BepInEx/plugins/VTSRTXGPUSelector.dll
 ```
 
 ### 3. 사용법
@@ -54,6 +54,13 @@ VTube Studio/BepInEx/plugins/VTSRTXUnlocker.dll
 3. GPU 선택 팝업이 자동 표시됨
 4. RTX GPU 선택 → 트래킹 시작
 
+### 문제 해결
+
+만약 VTube Studio가 실행되었는데 RTX GPU가 자동으로 선택되지 않는다면:
+
+1. `VTSRTXGPUSelector.dll` 플러그인이 `[VTS 설치폴더]/BepInEx/plugins/` 안에 있는지 다시 확인해 주세요.
+2. VTube Studio 공식 설치 관리자를 통해 **NVIDIA Tracker가 정상적으로 설치되었는지** 확인하세요.
+
 ### 소스에서 컴파일 (로컬 빌드)
 
 직접 플러그인을 빌드하고 싶다면 VTube Studio가 설치되어 있는지 확인하고 다음을 실행하세요:
@@ -61,13 +68,13 @@ VTube Studio/BepInEx/plugins/VTSRTXUnlocker.dll
 ```bash
 git clone https://github.com/bbggkkk/VTS-RTX-GPU-Selector.git
 cd VTS-RTX-GPU-Selector
-dotnet build src/VTSRTXUnlocker.csproj -c Release
+dotnet build src/VTS-RTX-GPU-Selector.csproj -c Release
 ```
 
 > **참고:** 이 프로젝트는 기본적으로 VTube Studio가 `C:\Program Files (x86)\Steam\steamapps\common\VTube Studio`에 설치되어 있다고 가정합니다. 만약 다른 곳에 설치했다면 다음과 같이 경로를 지정하세요:
-> `dotnet build src/VTSRTXUnlocker.csproj -c Release /p:VTSPath="D:\SteamLibrary\steamapps\common\VTube Studio"`
+> `dotnet build src/VTS-RTX-GPU-Selector.csproj -c Release /p:VTSPath="D:\SteamLibrary\steamapps\common\VTube Studio"`
 
-출력: `src/bin/Release/net462/VTSRTXUnlocker.dll`
+출력: `src/bin/Release/net462/VTSRTXGPUSelector.dll`
 
 ## 동작 원리
 
