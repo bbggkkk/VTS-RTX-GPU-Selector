@@ -11,16 +11,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="ci\**" />
+    <Compile Remove="..\ci\**" />
   </ItemGroup>
 
   <!--
     VTSPath: path to VTube Studio installation.
     - For local builds: set via command line or use default Steam path.
-    - For CI builds: set to ./lib/ with stub assemblies.
+    - For CI builds: set to ../lib/ with stub assemblies.
   -->
   <PropertyGroup>
-    <VTSPath Condition="'$(VTSPath)' == ''">lib</VTSPath>
+    <VTSPath Condition="'$(VTSPath)' == ''">..\lib</VTSPath>
+    <VTSConsolePath>$(VTSPath)\VTube Studio_Data\Managed</VTSConsolePath>
   </PropertyGroup>
 
   <!-- BepInEx & Harmony via NuGet (works in CI) -->
