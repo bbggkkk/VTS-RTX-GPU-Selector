@@ -1,6 +1,6 @@
-# VTS RTX Unlocker
+# VTS RTX GPU Selector
 
-[![Build](https://github.com/hanachan1026/VTSRTXUnlocker/actions/workflows/build.yml/badge.svg)](https://github.com/hanachan1026/VTSRTXUnlocker/actions/workflows/build.yml)
+[![Build](https://github.com/bbggkkk/VTS-RTX-GPU-Selector/actions/workflows/build.yml/badge.svg)](https://github.com/bbggkkk/VTS-RTX-GPU-Selector/actions/workflows/build.yml)
 
 [English](README.md)
 
@@ -41,7 +41,7 @@ VTube Studio/
 
 ### 2. 플러그인 설치
 
-[Releases](https://github.com/hanachan1026/VTSRTXUnlocker/releases)에서 `VTSRTXGPUSelector.dll`을 다운로드하여 아래 경로에 배치:
+[Releases](https://github.com/bbggkkk/VTS-RTX-GPU-Selector/releases)에서 `VTSRTXGPUSelector.dll`을 다운로드하여 아래 경로에 배치:
 
 ```
 VTube Studio/BepInEx/plugins/VTSRTXGPUSelector.dll

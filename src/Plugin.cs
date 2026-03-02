@@ -193,10 +193,10 @@ namespace VTSRTXGPUSelector
 
             GpuState.EnumerateGpus();
 
-            var harmony = new Harmony("com.vts.rtxunlocker");
+            var harmony = new Harmony("com.vts.rtxgpuselector");
             harmony.PatchAll();
 
-            Logger.LogInfo($"VTS RTX Unlocker v2.2 loaded. {GpuState.RtxGpus.Count} RTX GPU(s) found.");
+            Logger.LogInfo($"VTS RTX GPU Selector v2.2 loaded. {GpuState.RtxGpus.Count} RTX GPU(s) found.");
         }
     }
 

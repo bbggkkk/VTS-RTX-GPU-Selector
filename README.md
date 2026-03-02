@@ -1,6 +1,6 @@
-# VTS RTX Unlocker
+# VTS RTX GPU Selector
 
-[![Build](https://github.com/hanachan1026/VTSRTXUnlocker/actions/workflows/build.yml/badge.svg)](https://github.com/hanachan1026/VTSRTXUnlocker/actions/workflows/build.yml)
+[![Build](https://github.com/bbggkkk/VTS-RTX-GPU-Selector/actions/workflows/build.yml/badge.svg)](https://github.com/bbggkkk/VTS-RTX-GPU-Selector/actions/workflows/build.yml)
 
 [한국어](README.ko.md)
 
@@ -41,7 +41,7 @@ VTube Studio/
 
 ### 2. Install Plugin
 
-Download `VTSRTXGPUSelector.dll` from [Releases](https://github.com/hanachan1026/VTSRTXUnlocker/releases) and place it in:
+Download `VTSRTXGPUSelector.dll` from [Releases](https://github.com/bbggkkk/VTS-RTX-GPU-Selector/releases) and place it in:
 
 ```
 VTube Studio/BepInEx/plugins/VTSRTXGPUSelector.dll
