@@ -1,7 +1,5 @@
 # VTS RTX GPU Selector
 
-[![Build](https://github.com/bbggkkk/VTS-RTX-GPU-Selector/actions/workflows/build.yml/badge.svg)](https://github.com/bbggkkk/VTS-RTX-GPU-Selector/actions/workflows/build.yml)
-
 [한국어](README.ko.md)
 
 A [BepInEx](https://github.com/BepInEx/BepInEx) plugin for [VTube Studio](https://denchisoft.com/) that enables NVIDIA RTX face tracking on systems with **AMD + NVIDIA dual-GPU** setups.

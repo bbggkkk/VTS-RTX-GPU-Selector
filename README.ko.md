@@ -1,7 +1,5 @@
 # VTS RTX GPU Selector
 
-[![Build](https://github.com/bbggkkk/VTS-RTX-GPU-Selector/actions/workflows/build.yml/badge.svg)](https://github.com/bbggkkk/VTS-RTX-GPU-Selector/actions/workflows/build.yml)
-
 [English](README.md)
 
 [VTube Studio](https://denchisoft.com/)에서 **AMD + NVIDIA 듀얼 GPU** 환경에서도 NVIDIA RTX 트래킹을 사용할 수 있게 해주는 [BepInEx](https://github.com/BepInEx/BepInEx) 플러그인입니다.
