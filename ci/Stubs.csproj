@@ -3,6 +3,7 @@
     <TargetFramework>net462</TargetFramework>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <NoWarn>CS1701;CS1702;CS1705;CS0649;CS0169</NoWarn>
+    <MSBuildWarningsAsMessages>MSB3277</MSBuildWarningsAsMessages>
     <ResolveAssemblyReferencesSilently>true</ResolveAssemblyReferencesSilently>
     <OutputPath>..\lib\VTube Studio_Data\Managed\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>

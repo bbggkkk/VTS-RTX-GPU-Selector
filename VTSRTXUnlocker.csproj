@@ -6,6 +6,7 @@
     <AssemblyName>VTSRTXUnlocker</AssemblyName>
     <RootNamespace>VTSRTXUnlocker</RootNamespace>
     <NoWarn>CS1701;CS1702;CS1705</NoWarn>
+    <MSBuildWarningsAsMessages>MSB3277</MSBuildWarningsAsMessages>
     <ResolveAssemblyReferencesSilently>true</ResolveAssemblyReferencesSilently>
   </PropertyGroup>
 
