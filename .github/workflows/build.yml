@@ -24,7 +24,6 @@ jobs:
           dotnet build ci/Stubs.csproj -c Release
           $managedDir = "lib/VTube Studio_Data/Managed"
           New-Item -Path $managedDir -ItemType Directory -Force
-          Copy-Item "ci/bin/Release/net462/Assembly-CSharp.dll" "$managedDir/"
           # Copy Unity stubs from NuGet cache for the main project
           $unityPkg = Get-ChildItem -Path "$env:USERPROFILE/.nuget/packages/unity3d.unityengine.coremodule" -Recurse -Filter "UnityEngine.CoreModule.dll" | Select-Object -First 1
           if ($unityPkg) {
