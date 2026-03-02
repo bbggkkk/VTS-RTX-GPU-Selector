@@ -1,0 +1,94 @@
+# VTS RTX Unlocker
+
+[![Build](https://github.com/hanachan1026/VTSRTXUnlocker/actions/workflows/build.yml/badge.svg)](https://github.com/hanachan1026/VTSRTXUnlocker/actions/workflows/build.yml)
+
+[English](README.md)
+
+[VTube Studio](https://denchisoft.com/)에서 **AMD + NVIDIA 듀얼 GPU** 환경에서도 NVIDIA RTX 트래킹을 사용할 수 있게 해주는 [BepInEx](https://github.com/BepInEx/BepInEx) 플러그인입니다.
+
+## 문제
+
+VTube Studio는 **렌더링 GPU**만 확인해서 RTX 지원 여부를 판단합니다. OBS 캡처 호환성을 위해 VTS를 AMD GPU에서 렌더링하면, 시스템에 RTX GPU가 있어도 NVIDIA Broadcast 트래킹 메뉴가 감춰집니다.
+
+## 해결
+
+이 플러그인은:
+
+1. **Windows 레지스트리로 전체 GPU 스캔** (렌더링 GPU만이 아닌 전체)
+2. RTX GPU가 발견되면 **`SupportsRTX = true` 강제 설정**
+3. ExpressionApp 시작 시 **`CUDA_VISIBLE_DEVICES` 주입**으로 선택된 GPU 사용
+4. NVIDIA 트래킹 품질 선택 시 **VTS 네이티브 UI로 GPU 선택 팝업** 표시
+
+## 요구사항
+
+- **Windows** + NVIDIA RTX GPU
+- **VTube Studio** (Steam 버전)
+- **BepInEx 5.4.x** (Unity Mono x64)
+
+## 설치
+
+### 1. BepInEx 설치
+
+[BepInEx 5.4.23.2 (x64)](https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.2)를 다운로드하고 VTS 루트 폴더에 압축 해제:
+
+```
+VTube Studio/
+├── winhttp.dll              ← BepInEx
+├── doorstop_config.ini      ← BepInEx
+└── BepInEx/
+    └── core/                ← BepInEx 런타임
+```
+
+### 2. 플러그인 설치
+
+[Releases](https://github.com/hanachan1026/VTSRTXUnlocker/releases)에서 `VTSRTXUnlocker.dll`을 다운로드하여 아래 경로에 배치:
+
+```
+VTube Studio/BepInEx/plugins/VTSRTXUnlocker.dll
+```
+
+### 3. 사용법
+
+1. VTube Studio 실행 (AMD GPU에서 렌더링)
+2. **설정 → 트래킹 품질 → NVIDIA Broadcast** 선택
+3. GPU 선택 팝업이 자동 표시됨
+4. RTX GPU 선택 → 트래킹 시작
+
+## 소스에서 빌드
+
+```bash
+git clone https://github.com/hanachan1026/VTSRTXUnlocker.git
+cd VTSRTXUnlocker
+
+# VTS 경로 지정 (설치 위치에 맞게 수정)
+dotnet build -c Release -p:VTSPath="C:\Program Files (x86)\Steam\steamapps\common\VTube Studio"
+```
+
+출력: `bin/Release/net462/VTSRTXUnlocker.dll`
+
+## 동작 원리
+
+```
+VTS 시작 → Logger.LogDeviceType() → "AMD Radeon" → SupportsRTX = false
+  → [Harmony Postfix] 레지스트리 스캔 → RTX 발견 → SupportsRTX = true
+
+설정에서 NVIDIA 트래킹 품질 선택
+  → [Harmony Postfix] GPU 선택 팝업 (VTS 네이티브 UI)
+
+ExpressionApp 시작 → MXStarter.StartTrackerWithArguments()
+  → [Harmony Prefix] CUDA_VISIBLE_DEVICES = 선택된 GPU 인덱스
+  → ExpressionApp이 지정된 RTX GPU 사용
+  → [Harmony Postfix] 환경변수 초기화
+```
+
+## 제거
+
+```
+VTube Studio/winhttp.dll        ← 삭제
+VTube Studio/doorstop_config.ini ← 삭제
+VTube Studio/BepInEx/            ← 폴더 삭제
+```
+
+## 라이선스
+
+MIT

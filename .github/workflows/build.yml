@@ -1,0 +1,63 @@
+name: Build
+
+on:
+  push:
+    branches: [master, main]
+    tags: ["v*"]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Build stub assemblies
+        run: |
+          dotnet build ci/Stubs.csproj -c Release
+          $managedDir = "lib/VTube Studio_Data/Managed"
+          New-Item -Path $managedDir -ItemType Directory -Force
+          Copy-Item "ci/bin/Release/net462/Assembly-CSharp.dll" "$managedDir/"
+          # Copy Unity stubs from NuGet cache for the main project
+          $unityPkg = Get-ChildItem -Path "$env:USERPROFILE/.nuget/packages/unity3d.unityengine.coremodule" -Recurse -Filter "UnityEngine.CoreModule.dll" | Select-Object -First 1
+          if ($unityPkg) {
+            Copy-Item $unityPkg.FullName "$managedDir/"
+            Copy-Item $unityPkg.FullName "$managedDir/UnityEngine.dll"
+            Copy-Item $unityPkg.FullName "$managedDir/UnityEngine.IMGUIModule.dll"
+            Copy-Item $unityPkg.FullName "$managedDir/UnityEngine.InputLegacyModule.dll"
+            Copy-Item $unityPkg.FullName "$managedDir/UnityEngine.TextRenderingModule.dll"
+          }
+
+      - name: Build plugin
+        run: dotnet build -c Release
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: VTSRTXUnlocker
+          path: bin/Release/net462/VTSRTXUnlocker.dll
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: VTSRTXUnlocker
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: VTSRTXUnlocker.dll
+          generate_release_notes: true

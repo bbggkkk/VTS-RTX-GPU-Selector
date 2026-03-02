@@ -9,19 +9,27 @@
     <ResolveAssemblyReferencesSilently>true</ResolveAssemblyReferencesSilently>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="ci\**" />
+  </ItemGroup>
+
+  <!--
+    VTSPath: path to VTube Studio installation.
+    - For local builds: set via command line or use default Steam path.
+    - For CI builds: set to ./lib/ with stub assemblies.
+  -->
   <PropertyGroup>
-    <VTSPath>c:\Program Files (x86)\Steam\steamapps\common\VTube Studio</VTSPath>
+    <VTSPath Condition="'$(VTSPath)' == ''">lib</VTSPath>
   </PropertyGroup>
 
+  <!-- BepInEx & Harmony via NuGet (works in CI) -->
   <ItemGroup>
-    <Reference Include="BepInEx">
-      <HintPath>$(VTSPath)\BepInEx\core\BepInEx.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="0Harmony">
-      <HintPath>$(VTSPath)\BepInEx\core\0Harmony.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
+    <PackageReference Include="BepInEx.Core" Version="5.4.21" />
+    <PackageReference Include="HarmonyX" Version="2.10.1" />
+  </ItemGroup>
+
+  <!-- VTS assemblies (from local install or CI stubs) -->
+  <ItemGroup>
     <Reference Include="Assembly-CSharp">
       <HintPath>$(VTSPath)\VTube Studio_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>false</Private>

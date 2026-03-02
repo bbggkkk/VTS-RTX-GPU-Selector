@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net462</TargetFramework>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <NoWarn>CS1701;CS1702;CS1705;CS0649;CS0169</NoWarn>
+    <ResolveAssemblyReferencesSilently>true</ResolveAssemblyReferencesSilently>
+    <OutputPath>..\lib\VTube Studio_Data\Managed\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\lib\VTube Studio_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+</Project>
