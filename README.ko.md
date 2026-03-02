@@ -54,17 +54,20 @@ VTube Studio/BepInEx/plugins/VTSRTXUnlocker.dll
 3. GPU 선택 팝업이 자동 표시됨
 4. RTX GPU 선택 → 트래킹 시작
 
-## 소스에서 빌드
+### 소스에서 컴파일 (로컬 빌드)
+
+직접 플러그인을 빌드하고 싶다면 VTube Studio가 설치되어 있는지 확인하고 다음을 실행하세요:
 
 ```bash
-git clone https://github.com/hanachan1026/VTSRTXUnlocker.git
-cd VTSRTXUnlocker
-
-# VTS 경로 지정 (설치 위치에 맞게 수정)
-dotnet build -c Release -p:VTSPath="C:\Program Files (x86)\Steam\steamapps\common\VTube Studio"
+git clone https://github.com/bbggkkk/VTS-RTX-GPU-Selector.git
+cd VTS-RTX-GPU-Selector
+dotnet build src/VTSRTXUnlocker.csproj -c Release
 ```
 
-출력: `bin/Release/net462/VTSRTXUnlocker.dll`
+> **참고:** 이 프로젝트는 기본적으로 VTube Studio가 `C:\Program Files (x86)\Steam\steamapps\common\VTube Studio`에 설치되어 있다고 가정합니다. 만약 다른 곳에 설치했다면 다음과 같이 경로를 지정하세요:
+> `dotnet build src/VTSRTXUnlocker.csproj -c Release /p:VTSPath="D:\SteamLibrary\steamapps\common\VTube Studio"`
+
+출력: `src/bin/Release/net462/VTSRTXUnlocker.dll`
 
 ## 동작 원리
 

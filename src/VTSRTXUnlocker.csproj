@@ -10,17 +10,13 @@
     <ResolveAssemblyReferencesSilently>true</ResolveAssemblyReferencesSilently>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="..\ci\**" />
-  </ItemGroup>
-
   <!--
     VTSPath: path to VTube Studio installation.
-    - For local builds: set via command line or use default Steam path.
-    - For CI builds: set to ../lib/ with stub assemblies.
+    - Set via command line: dotnet build /p:VTSPath="C:\Your\Path"
+    - Default is the standard Steam library path.
   -->
   <PropertyGroup>
-    <VTSPath Condition="'$(VTSPath)' == ''">..\lib</VTSPath>
+    <VTSPath Condition="'$(VTSPath)' == ''">C:\Program Files (x86)\Steam\steamapps\common\VTube Studio</VTSPath>
     <VTSConsolePath>$(VTSPath)\VTube Studio_Data\Managed</VTSConsolePath>
   </PropertyGroup>
 
